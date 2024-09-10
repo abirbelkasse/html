@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ccinfo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>facture de vente</h1>
+        <form action="">
+        <select class="txt" id="ref" onchange="choix()">
+                <option>Select Reference</option> 
+                <option>R001</option>
+                <option>R002</option>
+                <option>R003</option>
+                <option>R004</option>
+                <option>R005</option>
+                
+
+
+        </select><br>
+        <input type="text" id="des" disabled placeholder="Description..." class="txt" ><br>
+        <input type="text" id="prix" disabled placeholder="Prix de vente..." class="txt" ><br>
+        <input type="text" id="qte" placeholder="Quantité vedue..." class="txt" ><br>
+        <br><br>
+        <p>
+            <label>TVA</label>
+            <input type="radio" name="tva" id="rd1" value="0.07">
+            <label for="rd1">7%</label>
+            <input type="radio" name="tva" id="rd2" value="0.07">
+            <label for="rd2">14%</label>
+            <input type="radio" name="tva" id="rd3" value="0.07">
+            <label for="rd3">20%</label>
+ </p><br><br> 
+        <input type="button" value="valider" class="btn" onclick="valider()">
+        <br><br>
+        <h3 id="mht"></h3>
+        <h3 id="mtva"></h3>
+        <h3 id="mttc"></h3>
+ </form>
+
+</div>
+ </body>
+ <script>
+
+function choix(){
+    var ref=document.getElementById('ref').value
+
+    switch (ref) {
+     case "R001":
+        document.getElementById('des').value="Clavier Optique"
+        document.getElementById('prix').value=50
+        document.getElementById('qte').focus()
+        break;
+    case "R002" :
+        document.getElementById('des').value="Souris Optique"
+        document.getElementById('prix').value=40
+        document.getElementById('qte').focus()
+        break;
+    case  "R003":
+       document.getElementById('des').value=" HDD 1T"
+       document.getElementById('prix').value=300
+       document.getElementById('qte').focus()
+       break;
+    case  "R004" :
+       document.getElementById('des').value="RAM 4G"
+       document.getElementById('prix').value=150
+       document.getElementById('qte').focus()
+       break;
+    case  "R005" :
+       document.getElementById('des').value="Ecran 32\""
+       document.getElementById('prix').value=500
+       document.getElementById('qte').focus()
+       break;
+
+
+    }
+
+
+}
+
+function valider () {
+    var prix=document.getElementById("prix").value
+    var qte=document.getElementById("qte").value
+    var rd1=document.getElementById("rd1")
+    var rd2=document.getElementById("rd2")
+    var rd3=document.getElementById("rd3")
+
+    var mht = prix * qte
+    var tva =0.2
+    if (rd1.checked)tva=rd1.value 
+    if (rd2.checked)tva=rd2.value 
+    if (rd3.checked)tva=rd3.value
+
+    var mtva = mht * tva 
+    var mttc = mht * mtva
+     
+    document.getElementById("mht").innerHTML="Le montant hors taxe est: "+mht+"MAD"
+    document.getElementById("mtva").innerHTML="Le montant tva est: "+mtva+"MAD"
+    document.getElementById("mttc").innerHTML="Le montant ttc est: "+mttc+"MAD"
+    
+
+        
+    
+
+}
+
+ </script>
+  </html>
