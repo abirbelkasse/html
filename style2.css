@@ -1,0 +1,9 @@
+h1{
+    text-align: center;
+    text-transform: capitalize;
+    border: 2px solid blue;
+    border-radius: 10px;
+    color: blueviolet;
+    background-color: aqua;
+    margin:100px;
+}
